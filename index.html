@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manpower Distribution</title>
+  <meta name="theme-color" content="#7a5a3a" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <section id="loginLanding" class="login-landing">
+    <div class="login-card">
+      <div class="eyebrow">MANPOWER CONTROL</div>
+      <h1>Manpower Distribution</h1>
+      <p>Sign in with your Helsingin Hitsaus Microsoft account to continue.</p>
+      <div id="landingStatus" class="landing-status">Connecting securely…</div>
+      <button id="microsoftLoginBtn" class="btn btn-primary btn-block" disabled>Sign in with Microsoft</button>
+      <details class="emergency-access">
+        <summary>Emergency administrator access</summary>
+        <form id="emergencyForm">
+          <label class="field"><span>Administrator password</span><input id="emergencyPassword" type="password" autocomplete="current-password" /></label>
+          <button id="emergencyLoginBtn" class="btn btn-block" type="submit" disabled>Emergency log in</button>
+        </form>
+      </details>
+      <div class="login-brand">Helsingin Hitsaus</div>
+    </div>
+  </section>
+
+  <div id="appShell" class="app-shell hidden">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">MANPOWER CONTROL</div>
+        <h1>Manpower Distribution</h1>
+      </div>
+      <div class="topbar-actions">
+        <span id="currentUser" class="user-chip"></span>
+        <button id="logoutBtn" class="btn btn-dark">Log out</button>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-view="planning">Planning</button>
+      <button class="tab" data-view="assignments">Assignments</button>
+      <button class="tab" data-view="workers">Workers</button>
+      <button class="tab" data-view="contractors">Contractors</button>
+      <button class="tab" data-view="reports">Weekly Reports</button>
+      <button id="usersTab" class="tab hidden" data-view="users">Users &amp; Access</button>
+    </nav>
+
+    <main class="main">
+      <section class="hero-panel">
+        <div>
+          <h2 id="viewTitle">Planning</h2>
+          <p id="viewSubtitle">Plan required manpower and compare it with actual assignments.</p>
+        </div>
+        <div id="metrics" class="metrics"></div>
+      </section>
+      <section id="toolbar" class="toolbar"></section>
+      <div id="notice" class="notice hidden"></div>
+      <section id="content" class="content-card"></section>
+    </main>
+  </div>
+
+  <dialog id="editorDialog" class="modal">
+    <form id="editorForm" class="modal-card">
+      <div class="modal-header">
+        <div><div id="editorEyebrow" class="eyebrow">EDIT</div><h3 id="editorTitle">Edit</h3></div>
+        <button type="button" class="icon-btn" data-close-dialog>×</button>
+      </div>
+      <div id="editorFields" class="form-grid"></div>
+      <div id="editorError" class="notice notice-error hidden"></div>
+      <div class="modal-actions">
+        <button type="button" class="btn" data-close-dialog>Cancel</button>
+        <button id="editorSaveBtn" class="btn btn-primary" type="submit">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="confirmDialog" class="modal modal-small">
+    <div class="modal-card">
+      <div class="modal-header"><h3 id="confirmTitle">Confirm</h3><button type="button" class="icon-btn" data-close-dialog>×</button></div>
+      <p id="confirmText"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn" data-close-dialog>Cancel</button>
+        <button id="confirmActionBtn" type="button" class="btn btn-danger">Confirm</button>
+      </div>
+    </div>
+  </dialog>
+
+  <div id="busyOverlay" class="busy-overlay hidden">
+    <div class="busy-card"><div class="spinner"></div><strong id="busyTitle">Working…</strong><span id="busyText"></span></div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
